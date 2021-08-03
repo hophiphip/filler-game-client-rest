@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+    </head>
+
+    <body>
+        <div id="new" class="panel">
+            <h1>New Game</h1> 
+
+            <p class="panel-text">Select field size</p>
+            
+            <select id="new-select" class="panel-select">
+              <option value="value1" selected="selected">15x10</option>
+              <option value="value2">25x15</option>
+              <option value="value3">35x25</option>
+            </select>
+            
+            <button id="new-button" class="panel-button">Next</button>        
+        </div>
+
+
+        <div id="game">
+            <canvas id="game-canvas"></canvas>
+            
+            <!-- Buttons -->
+            <div id="game-buttons" class="game-buttons">
+                <!-- Added dynamically in main.js -->
+            </div>
+
+            <!-- Current player's turn -->
+            <div id="game-players-state" class="panel-text"></div>
+        </div>
+
+        <div id="script">
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+            <script type="module" src="./js/main.js"></script>
+        </div>
+    </body>
+</html>
