@@ -1,0 +1,67 @@
+.panel {
+  /* Some styles and stuff */
+  font: 16px "Open Sans", Helvetica, Arial, sans-serif;
+  border: 1px solid #22d;
+  padding: 12px;
+  width: 500px;
+  
+  /* Center vertically & horizontally */
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.panel-text {
+  font: 22px "Open Sans", Helvetica, Arial, sans-serif;
+  padding: 12px;
+  padding: 5px 36px;
+}
+
+.panel-select {
+  font: 22px "Open Sans", Helvetica, Arial, sans-serif;
+  padding: 5px 36px;
+}
+
+.panel-button {
+  font: 22px "Open Sans", Helvetica, Arial, sans-serif;
+  padding: 5px 36px;
+}
+
+/* center game contents horizontally */
+#game { 
+  width: 100%; 
+  text-align: center; 
+  margin: auto; 
+}
+
+/* align contents horizontally */
+.game-buttons { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-buttons div {
+  width: 0px;
+  height: 0px;
+
+  /* Assigned dynamically
+   *
+  border: 30px solid #EF0000;
+  border-right-color: #AF0000;
+  border-bottom-color: #EF0000;
+  border-left-color: #FF0000;
+  *
+  */
+  transform: rotate(45deg);
+
+  /* padding on right & left to prevent overlapping */
+  margin:0 40px 40px 0;
+}
+
+.game-button-disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
