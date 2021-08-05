@@ -1,0 +1,30 @@
+.progress-bar {
+  background: rgba(151,117,117,0.1);
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  padding: 0 5px;
+  display: flex;
+  height: 40px;
+  width: 500px;
+
+  /* Needed for centering horizontally */
+  margin: auto; 
+}
+
+.progress-bar-value {
+  animation: load 3s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
+  border-radius: 100px;
+  background: #fff;
+  height: 30px;
+  width: 0;
+}
+
+/* NOTE: Not really needed here
+@keyframes load {
+  0% { width: 0; }
+  100% { width: 68%; }
+}
+*/

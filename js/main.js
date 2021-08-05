@@ -10,25 +10,41 @@ import { colors } from './models/colors.js';
 
 const gameIdKey = "gameId";
 
-const newPageStateId    = 'new',
-      newPageButtonId   = 'new-button',
-      newPageSelectId   = 'new-select',
-      gamePageStateId   = 'game',
-      gamePageCanvasId  = 'game-canvas',
-      gameButtonsId     = 'game-buttons',
-      gamePlayerStateId = 'game-players-state';
+const newPageStateId       = 'new',
+      newPageButtonId      = 'new-button',
+      newPageSelectId      = 'new-select',
+      gamePageStateId      = 'game',
+      gamePageCanvasId     = 'game-canvas',
+      gameButtonsId        = 'game-buttons',
+      gamePlayerStateId    = 'game-players-state',
+      gameProgress1Id      = 'progress-1',
+      gameProgress2Id      = 'progress-2',
+      gameProgressBar1Id   = 'progress-bar-1',
+      gameProgressBar2Id   = 'progress-bar-2';
 
-const newPageState    = document.getElementById(newPageStateId),
-      newPageButton   = document.getElementById(newPageButtonId),
-      newPageSelect   = document.getElementById(newPageSelectId),
-      gamePageState   = document.getElementById(gamePageStateId),
-      gamePageCanvas  = document.getElementById(gamePageCanvasId),
-      gameButtons     = document.getElementById(gameButtonsId),
-      gamePlayerState = document.getElementById(gamePlayerStateId);
+const newPageState       = document.getElementById(newPageStateId),
+      newPageButton      = document.getElementById(newPageButtonId),
+      newPageSelect      = document.getElementById(newPageSelectId),
+      gamePageState      = document.getElementById(gamePageStateId),
+      gamePageCanvas     = document.getElementById(gamePageCanvasId),
+      gameButtons        = document.getElementById(gameButtonsId),
+      gamePlayerState    = document.getElementById(gamePlayerStateId),
+      gameProgress1      = document.getElementById(gameProgress1Id),
+      gameProgress2      = document.getElementById(gameProgress2Id),
+      gameProgressBar1   = document.getElementById(gameProgressBar1Id),
+      gameProgressBar2   = document.getElementById(gameProgressBar2Id);
 
 var gameCanvasContext;
 
 var game;
+
+// TODO: Implement hide/unhide function
+newPageState.hidden  = false;
+gamePageState.hidden = true;
+// Progress bar must also be hidden
+gameProgressBar1.hidden = true;
+gameProgressBar2.hidden = true;
+
 
 // TODO: No `game over` state
 // TODO: Mark buttons that are not clickable
@@ -113,6 +129,18 @@ function init() {
       if (gamePlayerState == null) {
           errors += "[" + gamePlayerStateId + "]";
       }
+      if (gameProgress1 == null) {
+          errors += "[" + gameProgress1Id + "]";
+      }
+      if (gameProgress2 == null) {
+          errors += "[" + gameProgress2Id + "]";
+      }
+      if (gameProgressBar1 == null) {
+          errors += "[" + gameProgressBar1Id + "]";
+      }
+      if (gameProgressBar2 == null) {
+          errors += "[" + gameProgressBar2Id + "]";
+      }
 
       if (gamePageCanvas.getContext) {
           gameCanvasContext  = gamePageCanvas.getContext("2d");
@@ -135,6 +163,8 @@ function main() {
 
         newPageState.hidden  = false;
         gamePageState.hidden = true;
+        gameProgressBar1.hidden = true;
+        gameProgressBar2.hidden = true;
 
         newPageButton.addEventListener(
             "click",
@@ -168,6 +198,8 @@ function main() {
     else {
         newPageState.hidden  = true;
         gamePageState.hidden = false;
+        gameProgressBar1.hidden = false;
+        gameProgressBar2.hidden = false;
 
         console.log(gameId);
 
@@ -214,6 +246,17 @@ function draw(game) {
     gamePlayerState.style.color = 
         game.players[game.currentPlayerId].color === '#ffffff' ?
         '#000000' : game.players[game.currentPlayerId].color;
+
+    // Update progress bar
+    console.debug("Progress-1: ", game.field.playersCells[1].size / game.field.cells.length * 100);
+    console.debug("Progress-2: ", game.field.playersCells[2].size / game.field.cells.length * 100);
+    
+    gameProgress1.style.background = game.players[1].color;
+    gameProgress1.style.width = 100 * (game.field.playersCells[1].size / game.field.cells.length) + "%";
+    gameProgress2.style.background = game.players[2].color;
+    gameProgress2.style.width = 100 * (game.field.playersCells[2].size / game.field.cells.length) + "%";
+
+    // TODO: Handle game over here: ..
 }
 
 const err = init();

@@ -1,5 +1,4 @@
 .panel {
-  /* Some styles and stuff */
   font: 16px "Open Sans", Helvetica, Arial, sans-serif;
   border: 1px solid #22d;
   padding: 12px;
@@ -29,14 +28,14 @@
   padding: 5px 36px;
 }
 
-/* center game contents horizontally */
+/* Center game contents horizontally */
 #game { 
   width: 100%; 
   text-align: center; 
   margin: auto; 
 }
 
-/* align contents horizontally */
+/* Align contents horizontally */
 .game-buttons { 
   display: flex;
   justify-content: center;
@@ -47,7 +46,7 @@
   width: 0px;
   height: 0px;
 
-  /* Assigned dynamically
+  /* These styles are assigned dynamically in JS:
    *
   border: 30px solid #EF0000;
   border-right-color: #AF0000;
@@ -57,7 +56,7 @@
   */
   transform: rotate(45deg);
 
-  /* padding on right & left to prevent overlapping */
+  /* Padding on right & left to prevent overlapping */
   margin:0 40px 40px 0;
 }
 
