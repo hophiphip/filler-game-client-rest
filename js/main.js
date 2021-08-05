@@ -10,29 +10,33 @@ import { colors } from './models/colors.js';
 
 const gameIdKey = "gameId";
 
-const newPageStateId       = 'new',
-      newPageButtonId      = 'new-button',
-      newPageSelectId      = 'new-select',
-      gamePageStateId      = 'game',
-      gamePageCanvasId     = 'game-canvas',
-      gameButtonsId        = 'game-buttons',
-      gamePlayerStateId    = 'game-players-state',
-      gameProgress1Id      = 'progress-1',
-      gameProgress2Id      = 'progress-2',
-      gameProgressBar1Id   = 'progress-bar-1',
-      gameProgressBar2Id   = 'progress-bar-2';
+const newPageStateId        = 'new',
+      newPageButtonId       = 'new-button',
+      newPageSelectId       = 'new-select',
+      gamePageStateId       = 'game',
+      gamePageCanvasId      = 'game-canvas',
+      gameButtonsId         = 'game-buttons',
+      gamePlayerStateId     = 'game-players-state',
+      gameProgress1Id       = 'progress-1',
+      gameProgress2Id       = 'progress-2',
+      gameProgressBar1Id    = 'progress-bar-1',
+      gameProgressBar2Id    = 'progress-bar-2',
+      gameProgressCircle1Id = 'progress-circle-1',
+      gameProgressCircle2Id = 'progress-circle-2';
 
-const newPageState       = document.getElementById(newPageStateId),
-      newPageButton      = document.getElementById(newPageButtonId),
-      newPageSelect      = document.getElementById(newPageSelectId),
-      gamePageState      = document.getElementById(gamePageStateId),
-      gamePageCanvas     = document.getElementById(gamePageCanvasId),
-      gameButtons        = document.getElementById(gameButtonsId),
-      gamePlayerState    = document.getElementById(gamePlayerStateId),
-      gameProgress1      = document.getElementById(gameProgress1Id),
-      gameProgress2      = document.getElementById(gameProgress2Id),
-      gameProgressBar1   = document.getElementById(gameProgressBar1Id),
-      gameProgressBar2   = document.getElementById(gameProgressBar2Id);
+const newPageState          = document.getElementById(newPageStateId),
+      newPageButton         = document.getElementById(newPageButtonId),
+      newPageSelect         = document.getElementById(newPageSelectId),
+      gamePageState         = document.getElementById(gamePageStateId),
+      gamePageCanvas        = document.getElementById(gamePageCanvasId),
+      gameButtons           = document.getElementById(gameButtonsId),
+      gamePlayerState       = document.getElementById(gamePlayerStateId),
+      gameProgress1         = document.getElementById(gameProgress1Id),
+      gameProgress2         = document.getElementById(gameProgress2Id),
+      gameProgressBar1      = document.getElementById(gameProgressBar1Id),
+      gameProgressBar2      = document.getElementById(gameProgressBar2Id),
+      gameProgressCircle1   = document.getElementById(gameProgressCircle1Id),
+      gameProgressCircle2   = document.getElementById(gameProgressCircle2Id);
 
 var gameCanvasContext;
 
@@ -140,6 +144,12 @@ function init() {
       }
       if (gameProgressBar2 == null) {
           errors += "[" + gameProgressBar2Id + "]";
+      }
+      if (gameProgressCircle1 == null) {
+          errors += "[" + gameProgressCircle1Id + "]";
+      }
+      if (gameProgressCircle2 == null) {
+          errors += "[" + gameProgressCircle2Id + "]";
       }
 
       if (gamePageCanvas.getContext) {
@@ -256,7 +266,9 @@ function draw(game) {
     gameProgress2.style.background = game.players[2].color;
     gameProgress2.style.width = 100 * (game.field.playersCells[2].size / game.field.cells.length) + "%";
 
-    // TODO: Handle game over here: ..
+    gameProgressCircle1.style.background = game.players[1].color;
+    gameProgressCircle2.style.background = game.players[2].color;
+    // TODO: Handle gameover here: ..
 }
 
 const err = init();

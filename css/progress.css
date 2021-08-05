@@ -28,3 +28,19 @@
   100% { width: 68%; }
 }
 */
+
+.progress-circle {
+  color: #000;
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+ 
+  /* Allign text in center vertically and horizontally */
+  line-height: 30px;  
+  text-align: center;
+  vertical-align: middle;
+  
+  border-radius: 50%;
+  font-size: 12px;
+  margin-left: 10px;
+}

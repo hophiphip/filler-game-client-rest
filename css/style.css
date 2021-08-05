@@ -45,7 +45,7 @@
 .game-buttons div {
   width: 0px;
   height: 0px;
-
+  cursor: pointer;
   /* These styles are assigned dynamically in JS:
    *
   border: 30px solid #EF0000;
