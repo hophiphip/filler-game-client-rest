@@ -51,19 +51,30 @@ gameProgressBar2.hidden = true;
 
 
 // TODO: No `game over` state
-// TODO: Mark buttons that are not clickable
-// TODO: Game doesn't need to be global -> put everything into a class ..or does it?
-//
+// TODO: Game doesn't need to be global ..or does it?
+
+function assignButtonColors(button, color) {
+    if (Game.isUsefulColor(game, color)) {
+        button.style["border"] = "30px solid " + Cell._adjustColor(color, -25);
+        button.style["border-right-color"] = Cell._adjustColor(color, -50);
+        button.style["border-bottom-color"] = Cell._adjustColor(color, -25);
+        button.style["border-left-color"] = color;
+    } else {
+        button.style["border"] = "30px solid " + Cell._adjustColor(color, -175);
+        button.style["border-right-color"] = Cell._adjustColor(color, -200);
+        button.style["border-bottom-color"] = Cell._adjustColor(color, -175);
+        button.style["border-left-color"] = Cell._adjustColor(color, -150);
+    }
+}
+
 function addGameButtons() {
     if (gameButtons.childElementCount == 0) { 
         colors.forEach(function(color, index) {
             var button = document.createElement('div');
             button.id = gameButtonsId + "-" + index;
-            button.style["border"] = "30px solid " + Cell._adjustColor(color, -25);
-            button.style["border-right-color"] = Cell._adjustColor(color, -50);
-            button.style["border-bottom-color"] = Cell._adjustColor(color, -25);
-            button.style["border-left-color"] = color;
-           
+
+            assignButtonColors(button, color);
+
             button.addEventListener(
                 "click",
                 function() {
@@ -103,6 +114,10 @@ function addGameButtons() {
         });
     } else {
         console.log("Buttons have been added before");
+        
+        colors.forEach(function(color, index) {
+            assignButtonColors(gameButtons.children[index], color);
+        });
     }
 }
 

@@ -22,13 +22,6 @@
   width: 0;
 }
 
-/* NOTE: Not really needed here
-@keyframes load {
-  0% { width: 0; }
-  100% { width: 68%; }
-}
-*/
-
 .progress-circle {
   color: #000;
   background-color: #fff;
